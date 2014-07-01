@@ -1,6 +1,6 @@
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="../css/receiver.css" />
+	<link rel="stylesheet" type="text/css" href="receiver.css" />
 <body class="initial">
 	<div class="messages">
 		<h1>Waiting for Messages...</h1>
@@ -11,13 +11,14 @@
 <script src="https://www.gstatic.com/cast/js/receiver/1.0/cast_receiver.js"></script>
 <script>
 	$(function() {
-		var receiver = new cast.receiver.Receiver('*** YOUR APP ID ****', ['*** YOUR NAMESPACE ***']),
-			channelHandler = new cast.receiver.ChannelHandler('*** YOUR NAMESPACE ***'),
+        var namespace = 'com.tabtale.talecast';
+		var receiver = new cast.receiver.Receiver('79FFB77D', [namespace]),
+			channelHandler = new cast.receiver.ChannelHandler(namespace),
 			$messages = $('.messages'),
 			$body = $('body');
 		
 		channelHandler.addChannelFactory(
-			receiver.createChannelFactory('*** YOUR NAMESPACE ***'));
+			receiver.createChannelFactory(namespace));
 
 		receiver.start();
 
